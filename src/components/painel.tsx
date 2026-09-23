@@ -55,7 +55,7 @@ export function Painel({ carteira, documentos, execucoes, chave }: { carteira: C
               <span className="flex size-8 items-center justify-center rounded-lg bg-limao-400 text-floresta-950">
                 <IconeRaio size={18} />
               </span>
-              Quita
+              ZYRO
             </Link>
             <span className="hidden text-tinta-400 sm:inline">/</span>
             <span className="max-w-[40vw] truncate text-sm font-medium text-tinta-100 sm:max-w-none">{carteira.nome}</span>

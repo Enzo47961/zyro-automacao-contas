@@ -6,10 +6,10 @@ const titulo = Space_Grotesk({ subsets: ['latin'], variable: '--fonte-titulo', d
 const texto = Inter({ subsets: ['latin'], variable: '--fonte-texto', display: 'swap' });
 
 export const metadata: Metadata = {
-  title: { default: 'Quita · Contas a pagar no automático', template: '%s · Quita' },
+  title: { default: 'ZYRO · Contas a pagar no automático', template: '%s · ZYRO' },
   description:
-    'Mande o boleto, a conta ou o XML da nota fiscal no Telegram: o Quita confere o código, lê valor e vencimento, evita lançamento duplicado e lembra antes de vencer.',
-  applicationName: 'Quita',
+    'Mande o boleto, a conta ou o XML da nota fiscal no Telegram: o ZYRO confere o código, lê valor e vencimento, evita lançamento duplicado e lembra antes de vencer.',
+  applicationName: 'ZYRO',
   robots: { index: false, follow: false },
 };
 

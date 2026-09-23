@@ -1,12 +1,12 @@
-# Quita · contas a pagar no automático
+# ZYRO · contas a pagar no automático
 
 ![Next.js](https://img.shields.io/badge/Next.js_15-000?logo=nextdotjs) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=fff) ![Tailwind](https://img.shields.io/badge/Tailwind_v4-06B6D4?logo=tailwindcss&logoColor=fff) ![Telegram](https://img.shields.io/badge/Telegram-Bot_API-26A5E4?logo=telegram&logoColor=fff) ![Supabase](https://img.shields.io/badge/Supabase-Postgres-3ECF8E?logo=supabase&logoColor=fff) ![Vercel Cron](https://img.shields.io/badge/Vercel-Cron-000?logo=vercel)
 
 **🔗 Demo ao vivo: [quita-contas.vercel.app](https://quita-contas.vercel.app)** · bot: [@kdjdabot](https://t.me/kdjdabot) · painel de exemplo: [/demo](https://quita-contas.vercel.app/demo)
 
-![Painel do Quita](docs/painel.png)
+![Painel do ZYRO](docs/painel.png)
 
-Automação de contas a pagar para pequenos negócios. Você **encaminha o boleto, a conta de consumo ou o XML da NF-e para um bot do Telegram**, e o Quita faz o resto:
+Automação de contas a pagar para pequenos negócios. Você **encaminha o boleto, a conta de consumo ou o XML da NF-e para um bot do Telegram**, e o ZYRO faz o resto:
 
 1. **lê** o documento (texto do PDF ou campos do XML);
 2. **encontra e valida** a linha digitável ou a chave da NF-e pelos dígitos verificadores;
@@ -22,7 +22,7 @@ Automação de contas a pagar para pequenos negócios. Você **encaminha o bolet
 
 ## Por que não usa IA para ler o boleto
 
-A linha digitável **já carrega os dados**, protegidos por dígitos verificadores. O Quita decodifica tudo de forma determinística (`src/lib/codigos.ts`):
+A linha digitável **já carrega os dados**, protegidos por dígitos verificadores. O ZYRO decodifica tudo de forma determinística (`src/lib/codigos.ts`):
 
 | Documento | Tamanho | O que sai do código | Validação |
 | --- | --- | --- | --- |
@@ -33,7 +33,7 @@ A linha digitável **já carrega os dados**, protegidos por dígitos verificador
 
 Detalhes que costumam passar despercebidos:
 
-- **O fator de vencimento reiniciou em 22/02/2025** (chegou a 9999 e voltou a 1000). O mesmo fator vale para duas datas separadas por 25 anos, e o Quita escolhe a mais próxima de hoje.
+- **O fator de vencimento reiniciou em 22/02/2025** (chegou a 9999 e voltou a 1000). O mesmo fator vale para duas datas separadas por 25 anos, e o ZYRO escolhe a mais próxima de hoje.
 - Um documento impresso junta números vizinhos ("Pedido 2026 000123"). A busca testa janelas deslizantes e só aceita códigos com todos os DVs corretos. Em 2.000 boletos aleatórios, **zero falsos positivos** (há teste para isso).
 - A IA (Groq, camada gratuita, opcional) entra só para **dar nome ao fornecedor** quando o layout não tem o rótulo "Beneficiário". **Nunca decide valor nem data.**
 

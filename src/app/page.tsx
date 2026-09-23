@@ -35,7 +35,7 @@ const EXEMPLOS = [
 const TECNICO = [
   { icone: IconeCodigoBarras, titulo: 'Leitura matemática do boleto', texto: 'Valor, banco e vencimento saem da própria linha digitável, conferida por módulo 10 e 11 — inclusive o reinício do fator de vencimento de fevereiro de 2025.' },
   { icone: IconeDocumento, titulo: 'NF-e vira parcelas', texto: 'Do XML da nota saem emitente, CNPJ e cada duplicata com o seu vencimento. Uma nota de 3 parcelas vira 3 contas.' },
-  { icone: IconeEscudo, titulo: 'Sem lançamento duplo', texto: 'Cada documento tem uma impressão digital. Reenviou o mesmo boleto? O Quita avisa e não lança de novo.' },
+  { icone: IconeEscudo, titulo: 'Sem lançamento duplo', texto: 'Cada documento tem uma impressão digital. Reenviou o mesmo boleto? O ZYRO avisa e não lança de novo.' },
   { icone: IconeRelogio, titulo: 'Agendador diário', texto: 'Todo dia às 8h: lembrete X dias antes, no dia e no dia seguinte — nunca repetido. Às segundas, o resumo da semana.' },
   { icone: IconeFluxo, titulo: 'Execuções auditáveis', texto: 'Cada documento gera um registro passo a passo, com tempo e resultado, como uma execução de n8n.' },
   { icone: IconeGrafico, titulo: 'Painel pessoal', texto: 'Cada conversa no bot ganha um painel próprio com contas, previsão de saídas e gastos por categoria.' },
@@ -52,7 +52,7 @@ export default function Inicio() {
             <span className="flex size-9 items-center justify-center rounded-xl bg-limao-400 text-floresta-950">
               <IconeRaio size={20} />
             </span>
-            Quita
+            ZYRO
           </Link>
           <Link href="/demo" className="rounded-xl border border-white/15 px-4 py-2 text-sm font-semibold hover:border-limao-400">
             Painel demo
@@ -68,7 +68,7 @@ export default function Inicio() {
               Encaminhou o boleto. <span className="text-limao-400">Esqueceu a preocupação.</span>
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-tinta-300">
-              Mande o boleto, a conta de consumo ou o XML da nota fiscal para o bot. O Quita confere o código, lê valor e
+              Mande o boleto, a conta de consumo ou o XML da nota fiscal para o bot. O ZYRO confere o código, lê valor e
               vencimento, organiza por fornecedor e te chama no Telegram antes de vencer.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -89,7 +89,7 @@ export default function Inicio() {
                 <IconeRaio size={16} />
               </span>
               <div>
-                <p className="text-sm font-semibold">Quita</p>
+                <p className="text-sm font-semibold">ZYRO</p>
                 <p className="text-[11px] text-tinta-400">bot</p>
               </div>
             </div>
@@ -205,7 +205,7 @@ export default function Inicio() {
 
       <footer className="py-10 text-center text-xs text-tinta-500">
         <p className="inline-flex items-center gap-1.5">
-          <IconeCalendario size={14} /> Quita · projeto de portfólio · Next.js, Supabase, Telegram Bot API e Vercel Cron
+          <IconeCalendario size={14} /> ZYRO · projeto de portfólio · Next.js, Supabase, Telegram Bot API e Vercel Cron
         </p>
       </footer>
     </div>

@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 
-/* Quita — verde-floresta, limão e papel. */
+/* ZYRO — verde-floresta, limão e papel. */
 @theme {
   --font-sans: var(--fonte-texto), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --font-display: var(--fonte-titulo), var(--fonte-texto), ui-sans-serif, system-ui, sans-serif;

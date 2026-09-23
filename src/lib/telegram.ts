@@ -92,7 +92,7 @@ export async function tratarAtualizacao(atualizacao: Atualizacao): Promise<void>
   if (/^\/start\b/.test(texto)) {
     await enviar(
       chat,
-      `Olá, ${escapar(nome)}! 👋\n\nEu sou o <b>Quita</b>: cuido das suas contas a pagar.\n\n${AJUDA}\n\nPara testar agora, use um dos boletos de exemplo do site.`,
+      `Olá, ${escapar(nome)}! 👋\n\nEu sou o <b>ZYRO</b>: cuido das suas contas a pagar.\n\n${AJUDA}\n\nPara testar agora, use um dos boletos de exemplo do site.`,
       [[{ text: '📊 Abrir meu painel', url: linkPainel(carteira) }], [{ text: '📄 Baixar boletos de exemplo', url: `${process.env.APP_URL ?? ''}/#exemplos` }]],
     );
     return;
