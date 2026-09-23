@@ -1,0 +1,129 @@
+@import 'tailwindcss';
+
+/* Quita — verde-floresta, limão e papel. */
+@theme {
+  --font-sans: var(--fonte-texto), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-display: var(--fonte-titulo), var(--fonte-texto), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Mono', 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  --color-papel: #f6f7f2;
+  --color-tinta-50: #f3f5f2;
+  --color-tinta-100: #e6ebe6;
+  --color-tinta-200: #d0d8d1;
+  --color-tinta-300: #aab7ad;
+  --color-tinta-400: #7c8c80;
+  --color-tinta-500: #5d6d62;
+  --color-tinta-600: #46554a;
+  --color-tinta-700: #334037;
+  --color-tinta-800: #212b24;
+  --color-tinta-900: #141b16;
+
+  --color-floresta-50: #ecf6f0;
+  --color-floresta-100: #d3ebdd;
+  --color-floresta-500: #1f7a52;
+  --color-floresta-600: #17643f;
+  --color-floresta-700: #114e31;
+  --color-floresta-800: #0d3b25;
+  --color-floresta-900: #0a2c1c;
+  --color-floresta-950: #061b11;
+
+  --color-limao-200: #eefcb4;
+  --color-limao-300: #def98a;
+  --color-limao-400: #c8f04d;
+  --color-limao-500: #aad726;
+
+  --color-alerta-100: #fff1d6;
+  --color-alerta-500: #e8a317;
+  --color-alerta-700: #8a5a00;
+  --color-perigo-100: #fde4e1;
+  --color-perigo-500: #d9412f;
+  --color-perigo-700: #9c2519;
+  --color-info-100: #e3edfb;
+  --color-info-700: #28508f;
+
+  --shadow-suave: 0 1px 2px rgb(10 30 18 / 0.05), 0 8px 24px -12px rgb(10 30 18 / 0.16);
+  --shadow-alta: 0 2px 4px rgb(10 30 18 / 0.06), 0 28px 56px -20px rgb(10 30 18 / 0.32);
+
+  --animate-surgir: surgir 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes surgir {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes brilho {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@layer base {
+  * {
+    border-color: var(--color-tinta-200);
+  }
+  body {
+    background: var(--color-papel);
+    color: var(--color-tinta-900);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+  ::selection {
+    background: var(--color-limao-300);
+    color: var(--color-floresta-950);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-floresta-500);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@utility esqueleto {
+  background: linear-gradient(90deg, var(--color-tinta-100) 25%, var(--color-tinta-200) 37%, var(--color-tinta-100) 63%);
+  background-size: 200% 100%;
+  animation: brilho 1.6s linear infinite;
+}
+
+/* Pontilhado de fundo do herói — lembra papel milimetrado de contabilidade. */
+@utility grade-pontos {
+  background-image: radial-gradient(rgb(200 240 77 / 0.18) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+@layer utilities {
+  .texto-equilibrado {
+    text-wrap: balance;
+  }
+  .rolagem-fina::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .rolagem-fina::-webkit-scrollbar-thumb {
+    background: var(--color-tinta-300);
+    border-radius: 999px;
+  }
+}

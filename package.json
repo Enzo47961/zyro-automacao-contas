@@ -1,0 +1,36 @@
+{
+  "name": "quita-contas-automaticas",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Quita — automação de contas a pagar: lê boletos e notas fiscais enviados pelo Telegram, valida, organiza e lembra antes do vencimento.",
+  "scripts": {
+    "dev": "next dev -p 3300",
+    "build": "next build",
+    "start": "next start -p 3300",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test scripts/*.test.ts",
+    "exemplos": "node --import tsx scripts/gerar-exemplos.ts"
+  },
+  "engines": {
+    "node": ">=20.11"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.117.0",
+    "fast-xml-parser": "^5.11.1",
+    "next": "^15.5.26",
+    "pdf-lib": "^1.17.1",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "server-only": "^0.0.1",
+    "unpdf": "^1.8.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^24.13.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "tailwindcss": "^4.3.3",
+    "tsx": "^4.23.15",
+    "typescript": "~5.9.3"
+  }
+}
