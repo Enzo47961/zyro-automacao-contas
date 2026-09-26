@@ -50,7 +50,7 @@ export const linkPainel = (carteira: Pick<Carteira, 'token_painel'>) => `${proce
 
 /** Botões de uma conta: marcar como paga e ver a linha digitável para copiar. */
 export function botoesConta(doc: Pick<Documento, 'id' | 'linha_digitavel'>, carteira: Pick<Carteira, 'token_painel'>): Botao[][] {
-  const linha: Botao[] = [{ text: '✅ Paguei', callback_data: `pago:${doc.id}` }];
+  const linha: Botao[] = [{ text: '💸 Marcar como paga', callback_data: `pago:${doc.id}` }];
   if (doc.linha_digitavel) linha.push({ text: '📋 Linha digitável', callback_data: `linha:${doc.id}` });
   return [linha, [{ text: '📊 Abrir painel', url: linkPainel(carteira) }]];
 }

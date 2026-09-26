@@ -106,7 +106,9 @@ export function ListaContas({ documentos, carteira }: { documentos: Documento[];
                   <div className="shrink-0 text-right">
                     <p className="font-mono text-sm font-semibold">{reais(d.valor_centavos)}</p>
                     {d.status === 'pago' ? (
-                      <p className="text-[11px] text-floresta-600">pago {d.pago_em ? dataCurta(d.pago_em.slice(0, 10)) : ''}</p>
+                      <span className="inline-flex items-center gap-1 rounded-full bg-floresta-50 px-2 py-0.5 text-[11px] font-semibold text-floresta-700">
+                        <IconeCheck size={12} /> paga {d.pago_em ? dataCurta(d.pago_em.slice(0, 10)) : ''}
+                      </span>
                     ) : (
                       <span className={`inline-block rounded-full px-2 py-0.5 text-[11px] font-semibold ${TOM[p.tom]}`}>{p.texto}</span>
                     )}
@@ -115,9 +117,10 @@ export function ListaContas({ documentos, carteira }: { documentos: Documento[];
                     <button
                       type="button"
                       onClick={() => mudar(d.id, 'pago')}
-                      className="hidden shrink-0 items-center gap-1 rounded-xl border border-tinta-200 px-2.5 py-2 text-xs font-semibold text-tinta-700 transition hover:border-floresta-500 hover:bg-floresta-50 hover:text-floresta-700 sm:inline-flex"
+                      title="Clique quando esta conta já estiver paga: os avisos dela param."
+                      className="hidden shrink-0 items-center rounded-xl border border-dashed border-tinta-300 px-2.5 py-2 text-xs font-semibold text-tinta-700 transition hover:border-solid hover:border-floresta-500 hover:bg-floresta-50 hover:text-floresta-700 sm:inline-flex"
                     >
-                      <IconeCheck size={14} /> Paguei
+                      Marcar como paga
                     </button>
                   ) : null}
                 </div>

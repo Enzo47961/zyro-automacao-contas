@@ -191,7 +191,7 @@ export default function Inicio() {
             <IconeTelegram size={22} className="mt-0.5 shrink-0 text-floresta-600" />
             <div>
               <p className="font-semibold">Prefere o Telegram?</p>
-              <p className="text-sm text-tinta-600">O mesmo robô também recebe contas encaminhadas para o bot e manda os avisos por lá, com botão “Paguei”.</p>
+              <p className="text-sm text-tinta-600">O mesmo robô também recebe contas encaminhadas para o bot e manda os avisos por lá, com botão “Marcar como paga”.</p>
             </div>
           </div>
           <a href={`https://t.me/${BOT}`} target="_blank" rel="noreferrer" className="inline-flex shrink-0 items-center gap-2 rounded-xl border border-tinta-200 px-4 py-2.5 text-sm font-semibold hover:border-floresta-500">

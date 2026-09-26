@@ -485,8 +485,13 @@ export function SimulacaoGmail({ hojeInicial }: { hojeInicial: string }) {
                       {c.paga ? (
                         <span className="shrink-0 rounded-full bg-floresta-50 px-2 py-0.5 text-[11px] font-semibold text-floresta-700">paga</span>
                       ) : (
-                        <button type="button" onClick={() => void pagar(c)} className="shrink-0 rounded-lg border border-tinta-200 px-2 py-1 text-[11px] font-semibold text-tinta-600 hover:border-floresta-500">
-                          Paguei
+                        <button
+                          type="button"
+                          onClick={() => void pagar(c)}
+                          title="Clique quando esta conta já estiver paga: os avisos dela param."
+                          className="shrink-0 rounded-lg border border-dashed border-tinta-300 px-2 py-1 text-[11px] font-semibold text-tinta-600 hover:border-solid hover:border-floresta-500"
+                        >
+                          Marcar como paga
                         </button>
                       )}
                     </div>

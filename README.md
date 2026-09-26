@@ -15,7 +15,7 @@ Automação de contas a pagar para pequenos negócios (e para a conta de casa). 
 5. **agenda os avisos**: X dias antes, no dia e no dia seguinte. Às 8h, o script manda o aviso **do Gmail da pessoa para ela mesma**, e o app do Gmail notifica no celular e no computador. Cada aviso sai uma vez só;
 6. tudo aparece num **painel pessoal**: contas, próximos avisos, previsão de saídas, gastos por categoria e o **histórico de execuções**, passo a passo, como no n8n.
 
-O mesmo robô também atende pelo **Telegram** (encaminhe o boleto para o bot, receba os avisos com botão "✅ Paguei").
+O mesmo robô também atende pelo **Telegram** (encaminhe o boleto para o bot, receba os avisos com botão "💸 Marcar como paga").
 
 - Site: `/` · **Simulação visual**: `/gmail` · Ligar no Gmail: `/conectar` → `/p/{token}/gmail` · Painel da padaria fictícia: `/demo` · Painel pessoal: `/p/{token}`
 - Documentos de exemplo, gerados na hora e sempre com vencimento futuro: `/api/exemplos/{boleto-moinho|conta-energia|nfe-laticinios|boleto-internet}` (`?dias=N` define o vencimento)
@@ -28,7 +28,7 @@ Uma caixa de entrada de mentira com e-mails de verdade. Cada visitante ganha uma
 - o mesmo boleto reenviado e o lembrete da empresa com o código no corpo → **repetida · ignorada**;
 - propaganda → **não é conta** (nem entra no histórico).
 
-Um relógio simulado ("pular para o próximo aviso") mostra os avisos chegando: e-mail do ZYRO na caixa, notificação no celular e alerta no computador. Marcar "Paguei" cancela os avisos seguintes.
+Um relógio simulado ("pular para o próximo aviso") mostra os avisos chegando: e-mail do ZYRO na caixa, notificação no celular e alerta no computador. "Marcar como paga" cancela os avisos seguintes.
 
 ## Por que um script do Google e não "Entrar com Google"
 
