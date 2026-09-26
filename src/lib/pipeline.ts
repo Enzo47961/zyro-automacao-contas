@@ -126,7 +126,17 @@ function deNfe(nfe: NfeXml, origem: NovoDocumento['origem'], arquivo: string | n
 
 export async function processar(
   entrada: Entrada,
-  opcoes: { carteira: Carteira; gatilho: Execucao['gatilho']; origem: NovoDocumento['origem']; agora?: number; criadoEm?: string },
+  opcoes: {
+    carteira: Carteira;
+    gatilho: Execucao['gatilho'];
+    origem: NovoDocumento['origem'];
+    agora?: number;
+    criadoEm?: string;
+    /** Texto do passo "Receber" (ex.: remetente e assunto do e-mail). */
+    descricaoEntrada?: string;
+    /** Gmail: e-mail sem conta não vira execução, senão o histórico enche de newsletter. */
+    ignorarSemConta?: boolean;
+  },
 ): Promise<Resultado> {
   const reg = new Registro();
   const agora = opcoes.agora ?? Date.now();
@@ -143,7 +153,7 @@ export async function processar(
       duracao_ms: reg.total,
       ...(opcoes.criadoEm ? { criado_em: opcoes.criadoEm } : {}),
     };
-    await banco.registrarExecucao(execucao);
+    if (!(opcoes.ignorarSemConta && documentos.length === 0)) await banco.registrarExecucao(execucao);
     return { execucao, documentos, mensagem };
   };
 
@@ -151,7 +161,8 @@ export async function processar(
   reg.add(
     'Receber',
     'ok',
-    entrada.tipo === 'arquivo' ? `${entrada.nome} · ${(entrada.bytes.byteLength / 1024).toFixed(1).replace('.', ',')} KB` : `mensagem de texto (${entrada.texto.length} caracteres)`,
+    opcoes.descricaoEntrada ??
+    (entrada.tipo === 'arquivo' ? `${entrada.nome} · ${(entrada.bytes.byteLength / 1024).toFixed(1).replace('.', ',')} KB` : `mensagem de texto (${entrada.texto.length} caracteres)`),
   );
 
   // 2. Ler conteúdo

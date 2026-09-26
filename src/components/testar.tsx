@@ -77,7 +77,7 @@ export function TestarAutomacao({ carteira }: { carteira: string }) {
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-tinta-100 px-5 py-4">
         <div>
           <h2 className="text-lg font-semibold text-tinta-900">Testar a automação</h2>
-          <p className="text-xs text-tinta-500">O mesmo fluxo que roda quando alguém manda um documento para o bot.</p>
+          <p className="text-xs text-tinta-500">O mesmo fluxo que roda quando uma conta chega no Gmail ou no bot.</p>
         </div>
         <div className="flex rounded-xl bg-tinta-100 p-1 text-xs font-semibold" role="tablist">
           {(

@@ -4,11 +4,12 @@ import { useRouter } from 'next/navigation';
 import { useMemo, useState, useTransition } from 'react';
 import type { Documento, Execucao } from '@/lib/banco';
 import { dataBr, dataCurta, formatarLinha, hoje, prazo, reais, TOM } from '@/lib/formato';
-import { IconeCheck, IconeChevron, IconeCopiar, IconeDocumento, IconeFluxo, IconeRelogio, IconeTelegram, IconeUpload } from './icones';
+import { IconeCheck, IconeChevron, IconeCopiar, IconeDocumento, IconeEmail, IconeFluxo, IconeRelogio, IconeTelegram, IconeUpload } from './icones';
 
 type Filtro = 'abertas' | 'vencidas' | 'pagas';
 
 const ORIGEM: Record<Documento['origem'], { rotulo: string; icone: React.ReactNode }> = {
+  gmail: { rotulo: 'Gmail', icone: <IconeEmail size={13} /> },
   telegram: { rotulo: 'Telegram', icone: <IconeTelegram size={13} /> },
   upload: { rotulo: 'Upload', icone: <IconeUpload size={13} /> },
   exemplo: { rotulo: 'Exemplo', icone: <IconeDocumento size={13} /> },
@@ -183,11 +184,12 @@ const STATUS_EXEC: Record<Execucao['status'], { rotulo: string; cor: string }> =
 };
 
 const GATILHO: Record<Execucao['gatilho'], { rotulo: string; icone: React.ReactNode }> = {
+  gmail: { rotulo: 'Gmail', icone: <IconeEmail size={14} /> },
   telegram: { rotulo: 'Telegram', icone: <IconeTelegram size={14} /> },
   upload: { rotulo: 'Upload no painel', icone: <IconeUpload size={14} /> },
   exemplo: { rotulo: 'Exemplo', icone: <IconeDocumento size={14} /> },
   texto: { rotulo: 'Código colado', icone: <IconeDocumento size={14} /> },
-  agendador: { rotulo: 'Agendador diário', icone: <IconeRelogio size={14} /> },
+  agendador: { rotulo: 'Avisos', icone: <IconeRelogio size={14} /> },
 };
 
 export function ListaExecucoes({ execucoes }: { execucoes: Execucao[] }) {

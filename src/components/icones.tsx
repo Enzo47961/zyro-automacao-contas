@@ -262,3 +262,31 @@ export const IconeCodigoBarras = (p: Props) => (
     <path d="M4 5v14M7 5v14M10 5v14M14 5v14M16 5v14M20 5v14" />
   </Base>
 );
+
+export const IconeEmail = (p: Props) => (
+  <Base {...p}>
+    <rect x="3" y="5" width="18" height="14" rx="2.5" />
+    <path d="m3.5 7 8.5 6 8.5-6" />
+  </Base>
+);
+
+export const IconeSino = (p: Props) => (
+  <Base {...p}>
+    <path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15L6 16Z" />
+    <path d="M10 20.5a2.2 2.2 0 0 0 4 0" />
+  </Base>
+);
+
+export const IconeCelular = (p: Props) => (
+  <Base {...p}>
+    <rect x="6.5" y="2.5" width="11" height="19" rx="2.5" />
+    <path d="M11 18.5h2" />
+  </Base>
+);
+
+export const IconeComputador = (p: Props) => (
+  <Base {...p}>
+    <rect x="3" y="4" width="18" height="12" rx="2" />
+    <path d="M8 20h8M12 16v4" />
+  </Base>
+);

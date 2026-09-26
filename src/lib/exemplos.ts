@@ -234,13 +234,13 @@ export type IdExemplo = (typeof EXEMPLOS)[number]['id'];
  * visitante vê o cadastro acontecer. Reenviar o mesmo arquivo baixado mostra o
  * bloqueio de duplicidade.
  */
-export async function gerarExemplo(id: IdExemplo, agora = Date.now(), variacao = 0): Promise<{ nome: string; mime: string; bytes: Uint8Array }> {
+export async function gerarExemplo(id: IdExemplo, agora = Date.now(), variacao = 0, dias?: number): Promise<{ nome: string; mime: string; bytes: Uint8Array }> {
   const sufixo = String(variacao).padStart(4, '0').slice(-4);
   switch (id) {
     case 'boleto-moinho':
     case 'boleto-internet': {
       const modelo = MODELOS_BOLETO[id === 'boleto-moinho' ? 0 : 1];
-      const { bytes } = await pdfBoleto({ ...modelo, nossoNumero: `${modelo.nossoNumero.slice(0, 7)}${sufixo}` }, agora);
+      const { bytes } = await pdfBoleto({ ...modelo, nossoNumero: `${modelo.nossoNumero.slice(0, 7)}${sufixo}`, diasParaVencer: dias ?? modelo.diasParaVencer }, agora);
       return { nome: modelo.arquivo, mime: 'application/pdf', bytes };
     }
     case 'conta-energia':

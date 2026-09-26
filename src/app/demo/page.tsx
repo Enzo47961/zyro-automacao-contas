@@ -9,6 +9,6 @@ export const metadata: Metadata = { title: 'Painel de demonstração' };
 export default async function PaginaDemo() {
   const carteira = await banco.carteiraDemo();
   if (!carteira) notFound();
-  const { documentos, execucoes } = await banco.painel(carteira.id);
-  return <Painel carteira={carteira} documentos={documentos} execucoes={execucoes} chave="demo" />;
+  const dados = await banco.painel(carteira.id);
+  return <Painel carteira={carteira} {...dados} chave="demo" />;
 }

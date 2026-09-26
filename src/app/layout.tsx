@@ -8,7 +8,7 @@ const texto = Inter({ subsets: ['latin'], variable: '--fonte-texto', display: 's
 export const metadata: Metadata = {
   title: { default: 'ZYRO · Contas a pagar no automático', template: '%s · ZYRO' },
   description:
-    'Mande o boleto, a conta ou o XML da nota fiscal no Telegram: o ZYRO confere o código, lê valor e vencimento, evita lançamento duplicado e lembra antes de vencer.',
+    'Chegou a conta no Gmail, o ZYRO agenda o aviso: lê boleto, conta de consumo ou NF-e, confere o código, ignora a mesma conta repetida e avisa no celular antes de vencer.',
   applicationName: 'ZYRO',
   robots: { index: false, follow: false },
 };

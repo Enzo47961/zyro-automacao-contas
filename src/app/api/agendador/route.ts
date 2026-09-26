@@ -22,7 +22,8 @@ const TITULOS = {
  * GET /api/agendador — rodado todo dia às 8h (Vercel Cron, 11:00 UTC).
  * 1. envia os lembretes do dia (antecedência, vencimento, atraso) — nunca repete;
  * 2. às segundas, manda o resumo da semana;
- * 3. recria a carteira de demonstração.
+ * 3. recria a carteira de demonstração e apaga as simulações do /gmail com mais de um dia.
+ * Os avisos por e-mail não passam por aqui: quem os envia é o script no Gmail da pessoa.
  */
 export async function GET(request: Request) {
   if (request.headers.get('authorization') !== `Bearer ${process.env.CRON_SECRET}`) {
@@ -30,7 +31,7 @@ export async function GET(request: Request) {
   }
   const inicio = Date.now();
   const hoje = hojeBrasilia();
-  const relatorio = { lembretes: 0, falhas: 0, resumos: 0, demo: null as null | { contas: number } };
+  const relatorio = { lembretes: 0, falhas: 0, resumos: 0, simulacoesApagadas: 0, demo: null as null | { contas: number } };
 
   const pendentes = await banco.lembretesPendentes(hoje);
   const porCarteira = new Map<string, Passo[]>();
@@ -77,5 +78,6 @@ export async function GET(request: Request) {
   }
 
   relatorio.demo = await regenerarDemo();
+  relatorio.simulacoesApagadas = await banco.limparSimulacoes();
   return NextResponse.json({ ok: true, hoje, ...relatorio, duracao_ms: Date.now() - inicio });
 }

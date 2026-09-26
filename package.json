@@ -2,7 +2,7 @@
   "name": "quita-contas-automaticas",
   "version": "1.0.0",
   "private": true,
-  "description": "Quita — automação de contas a pagar: lê boletos e notas fiscais enviados pelo Telegram, valida, organiza e lembra antes do vencimento.",
+  "description": "ZYRO — contas a pagar no automático: lê boletos e notas fiscais que chegam no Gmail (ou no Telegram), ignora contas repetidas e avisa antes do vencimento.",
   "scripts": {
     "dev": "next dev -p 3300",
     "build": "next build",

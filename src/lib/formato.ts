@@ -51,3 +51,5 @@ export function htmlSeguro(texto: string): string {
     .replace(/<(?!\/?b>)/g, '&lt;')
     .replace(/\n/g, '<br/>');
 }
+
+export const somarDias = (dia: string, n: number) => new Date(Date.parse(`${dia}T12:00:00Z`) + n * DIA_MS).toISOString().slice(0, 10);

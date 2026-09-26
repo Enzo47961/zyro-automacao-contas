@@ -65,9 +65,11 @@ export async function regenerarDemo(agora = Date.now()): Promise<{ contas: numbe
       arquivo = { nome: `nfe-${item.numero}.xml`, mime: 'application/xml', bytes: new TextEncoder().encode(xmlNfeLaticinios(agora, item.numero, item.dias)) };
     }
 
+    // A maioria chega pelo Gmail; algumas pelo Telegram e pelo upload no painel.
+    const canal = execucoes % 4 === 3 ? 'telegram' : execucoes % 5 === 4 ? 'upload' : 'gmail';
     const resultado = await processar(
       { tipo: 'arquivo', ...arquivo },
-      { carteira, gatilho: execucoes % 3 === 2 ? 'upload' : 'telegram', origem: execucoes % 3 === 2 ? 'upload' : 'telegram', agora, criadoEm: chegada },
+      { carteira, gatilho: canal, origem: canal, agora, criadoEm: chegada },
     );
     execucoes += 1;
     contas += resultado.documentos.filter((d) => !d.duplicado).length;

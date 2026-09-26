@@ -13,6 +13,6 @@ type Props = { params: Promise<{ token: string }> };
 export default async function PaginaCarteira({ params }: Props) {
   const carteira = await resolverCarteira((await params).token);
   if (!carteira || carteira.demo) notFound();
-  const { documentos, execucoes } = await banco.painel(carteira.id);
-  return <Painel carteira={carteira} documentos={documentos} execucoes={execucoes} chave={carteira.token_painel} />;
+  const dados = await banco.painel(carteira.id);
+  return <Painel carteira={carteira} {...dados} chave={carteira.token_painel} />;
 }
