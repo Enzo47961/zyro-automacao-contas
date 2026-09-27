@@ -29,7 +29,7 @@ const PASSOS = [
     No menu de cima, escolha a função <b>instalar</b> e clique em <b>Executar</b>.
   </>,
   <>
-    O Google pede autorização e mostra um aviso de app não verificado. É esperado: veja abaixo as 4 telas e onde clicar em cada uma.
+    O Google pede autorização e mostra um aviso de app não verificado. É esperado: faça o ensaio logo abaixo para ver cada tela e onde clicar.
   </>,
   <>
     Pronto. Quer ver funcionando na hora? Escolha a função <b>testar</b> e execute: chega um boleto de exemplo no seu Gmail e, logo depois, o aviso.
