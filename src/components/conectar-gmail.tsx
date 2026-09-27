@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { IconeCheck, IconeCopiar, IconeSeta } from './icones';
 
 export function FormConectar() {
@@ -78,11 +78,21 @@ export function CopiarScript({ script }: { script: string }) {
   );
 }
 
-/** Enquanto o Gmail não se conecta, recarrega o status a cada 5 segundos. */
+/**
+ * Enquanto o Gmail não se conecta, recarrega o status a cada 5 segundos. Quando
+ * conecta, o título da aba muda (a pessoa está na aba do Google e precisa achar
+ * esta) e a página sobe até o cartão com o botão do painel.
+ */
 export function AguardarConexao({ conectado }: { conectado: boolean }) {
   const router = useRouter();
+  const antes = useRef(conectado);
   useEffect(() => {
-    if (conectado) return;
+    if (conectado) {
+      document.title = '✅ Gmail conectado · ZYRO';
+      if (!antes.current) window.scrollTo({ top: 0, behavior: 'smooth' });
+      antes.current = true;
+      return;
+    }
     const t = setInterval(() => router.refresh(), 5000);
     return () => clearInterval(t);
   }, [conectado, router]);

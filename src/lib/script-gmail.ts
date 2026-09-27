@@ -4,7 +4,7 @@
  * sai do próprio Gmail para ela mesma — o app do Gmail notifica no celular e no
  * computador, sem precisar de domínio nem de serviço de e-mail.
  */
-export function scriptGmail(url: string, chave: string): string {
+export function scriptGmail(url: string, chave: string, painel: string): string {
   return `/**
  * ZYRO no Gmail
  * 1. Cole este código em script.google.com (Novo projeto), no lugar do que já existe.
@@ -27,7 +27,7 @@ function instalar() {
   chamar_('post', '/api/gmail/ping', { email: Session.getEffectiveUser().getEmail() });
   verificarContas();
   enviarAvisos_(true);
-  Logger.log('ZYRO instalado. Volte à página do ZYRO: ela já mostra "Gmail conectado".');
+  Logger.log('✅ ZYRO instalado! Volte para a aba do ZYRO (ela mostra "Gmail conectado") ou abra o seu painel: ${painel}');
 }
 
 /** Lê os e-mails novos com cara de conta e manda para o ZYRO. Cada conversa é marcada com o rótulo ZYRO. */

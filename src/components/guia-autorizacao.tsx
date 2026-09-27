@@ -198,7 +198,8 @@ export function GuiaAutorizacao() {
           </span>
           <p className="mt-4 text-xl font-bold">Pronto, é só isso.</p>
           <p className="mx-auto mt-2 max-w-md text-sm text-tinta-600">
-            Depois do “Permitir”, o editor mostra “Execução concluída” e esta página muda para <b>Gmail conectado</b>. Agora copie o código logo abaixo e
+            Depois do “Permitir”, o editor mostra “Execução concluída”. Aí é só <b>voltar para esta aba</b>: ela muda sozinha para{' '}
+            <b>Gmail conectado</b>, com o botão para o seu painel. Agora copie o código logo abaixo e
             faça de verdade: as telas vão ser essas, na mesma ordem.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">

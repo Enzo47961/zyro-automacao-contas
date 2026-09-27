@@ -40,7 +40,8 @@ export default async function PaginaGmail({ params }: Props) {
   const carteira = await resolverCarteira((await params).token);
   if (!carteira || carteira.demo || carteira.simulacao) notFound();
 
-  const script = scriptGmail(process.env.APP_URL ?? 'https://quita-contas.vercel.app', carteira.chave_gmail);
+  const url = process.env.APP_URL ?? 'https://quita-contas.vercel.app';
+  const script = scriptGmail(url, carteira.chave_gmail, `${url}/p/${carteira.token_painel}`);
   const conectado = Boolean(carteira.gmail_conectado_em);
   const ultima = carteira.gmail_verificado_em
     ? new Date(carteira.gmail_verificado_em).toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit', timeZone: 'America/Sao_Paulo' })
@@ -67,25 +68,44 @@ export default async function PaginaGmail({ params }: Props) {
         <p className="text-sm text-tinta-500">{carteira.nome}</p>
         <h1 className="mt-1 text-3xl font-bold sm:text-4xl">Ligar o ZYRO no seu Gmail</h1>
 
-        <div
-          className={`mt-6 flex items-center gap-3 rounded-2xl px-5 py-4 ${conectado ? 'bg-floresta-800 text-white' : 'border border-alerta-500/40 bg-alerta-100 text-alerta-700'}`}
-          aria-live="polite"
-        >
-          {conectado ? <IconeCheck size={20} className="shrink-0 text-limao-400" /> : <IconeEmail size={20} className="shrink-0" />}
-          <div className="text-sm">
-            {conectado ? (
-              <>
-                <b>Gmail conectado</b>
-                {carteira.gmail_email ? ` · ${carteira.gmail_email}` : ''}
-                {ultima ? <span className="block text-tinta-200">Última conferência da caixa: {ultima}</span> : null}
-              </>
-            ) : (
-              <>
-                <b>Aguardando o Gmail…</b> Siga os passos abaixo. Esta página atualiza sozinha quando o script rodar pela primeira vez.
-              </>
-            )}
+        {conectado ? (
+          <div className="mt-6 animate-surgir rounded-3xl bg-floresta-900 p-6 text-white shadow-alta sm:p-8" aria-live="polite">
+            <div className="flex items-start gap-4">
+              <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-limao-400 text-floresta-950">
+                <IconeCheck size={26} />
+              </span>
+              <div className="min-w-0">
+                <p className="text-2xl font-bold">Tudo certo! Seu Gmail está conectado.</p>
+                <p className="mt-1 text-sm text-tinta-200">
+                  {carteira.gmail_email ? `${carteira.gmail_email} · ` : ''}
+                  {ultima ? `última conferência da caixa: ${ultima}` : 'o ZYRO já está de olho na sua caixa de entrada'}
+                </p>
+                <p className="mt-3 text-sm text-tinta-200">
+                  A cada 10 minutos o ZYRO confere seus e-mails. As contas que chegarem aparecem no seu painel, e os avisos chegam no seu Gmail às 8h.
+                </p>
+              </div>
+            </div>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link
+                href={`/p/${carteira.token_painel}`}
+                className="inline-flex items-center gap-2 rounded-2xl bg-limao-400 px-6 py-3.5 font-semibold text-floresta-950 transition hover:bg-limao-300"
+              >
+                Ir para o meu painel <IconeSeta size={18} />
+              </Link>
+              <p className="self-center text-xs text-tinta-300">
+                Quer ver funcionando agora? No script, rode a função <b>testar</b>.
+              </p>
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="mt-6 flex items-center gap-3 rounded-2xl border border-alerta-500/40 bg-alerta-100 px-5 py-4 text-alerta-700" aria-live="polite">
+            <IconeEmail size={20} className="shrink-0" />
+            <p className="text-sm">
+              <b>Aguardando o Gmail…</b> Siga os passos abaixo. Quando a instalação terminar, volte para esta aba: ela atualiza sozinha e mostra o botão
+              para o seu painel.
+            </p>
+          </div>
+        )}
 
         <ol className="mt-8 space-y-4">
           {PASSOS.map((p, i) => (
