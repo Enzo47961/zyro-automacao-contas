@@ -26,6 +26,7 @@ export default function PaginaConectar() {
           <li>• Só e-mails com cara de conta são lidos (boleto, fatura, nota fiscal).</li>
           <li>• O texto do e-mail não fica guardado: só valor, vencimento e fornecedor.</li>
           <li>• Para desligar, basta apagar o script no Google.</li>
+          <li>• Na instalação, o Google mostra um aviso de “app não verificado”. É normal para scripts pessoais: a próxima tela mostra onde clicar.</li>
         </ul>
         <p className="mt-8 text-sm text-tinta-400">
           Só quer ver como funciona?{' '}

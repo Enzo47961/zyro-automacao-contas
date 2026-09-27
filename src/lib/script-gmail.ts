@@ -9,7 +9,8 @@ export function scriptGmail(url: string, chave: string): string {
  * ZYRO no Gmail
  * 1. Cole este código em script.google.com (Novo projeto), no lugar do que já existe.
  * 2. Salve, escolha a função "instalar" no menu de cima e clique em Executar.
- * 3. Autorize o acesso ao Gmail. Pronto: o ZYRO confere a caixa a cada 10 minutos.
+ * 3. Autorize o acesso ao Gmail. O Google avisa que o app não foi verificado (o script é seu, roda só na sua
+ *    conta): clique em Avançado → Acessar ZYRO → Permitir. Pronto: o ZYRO confere a caixa a cada 10 minutos.
  * Para testar na hora, rode a função "testar": ela manda um boleto de exemplo para você.
  */
 const ZYRO_URL = '${url}';

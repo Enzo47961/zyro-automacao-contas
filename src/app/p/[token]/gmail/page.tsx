@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { AguardarConexao, CopiarScript } from '@/components/conectar-gmail';
+import { GuiaAutorizacao } from '@/components/guia-autorizacao';
 import { IconeCheck, IconeEmail, IconeRaio, IconeSeta } from '@/components/icones';
 import { resolverCarteira } from '@/lib/carteira';
 import { scriptGmail } from '@/lib/script-gmail';
@@ -20,12 +21,15 @@ const PASSOS = [
     </a>{' '}
     com a conta do Gmail que recebe as contas. Um projeto novo abre sozinho.
   </>,
+  <>
+    Clique em <b>Projeto sem título</b>, no topo, e renomeie para <b>ZYRO</b>. É o nome que vai aparecer nas telas de autorização.
+  </>,
   <>Apague o que estiver no editor e cole o código abaixo. Clique no disquete para salvar.</>,
   <>
     No menu de cima, escolha a função <b>instalar</b> e clique em <b>Executar</b>.
   </>,
   <>
-    O Google pede autorização. Como o script é seu, ele avisa que o app “não foi verificado”: clique em <b>Avançado</b> e depois em <b>Acessar</b>.
+    O Google pede autorização e mostra um aviso de app não verificado. É esperado: veja abaixo as 4 telas e onde clicar em cada uma.
   </>,
   <>
     Pronto. Quer ver funcionando na hora? Escolha a função <b>testar</b> e execute: chega um boleto de exemplo no seu Gmail e, logo depois, o aviso.
@@ -91,6 +95,8 @@ export default async function PaginaGmail({ params }: Props) {
             </li>
           ))}
         </ol>
+
+        <GuiaAutorizacao />
 
         <div className="mt-8">
           <CopiarScript script={script} />
