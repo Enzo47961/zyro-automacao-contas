@@ -89,7 +89,7 @@ export function GuiaAutorizacao() {
       <div className="mt-4 grid gap-2 text-xs text-tinta-600 sm:grid-cols-3">
         <p>
           <b className="text-tinta-900">Acesso ao Gmail:</b> o Google descreve o acesso completo, mas o script só lê, marca as conversas com o rótulo
-          ZYRO e nunca apaga nada. O código está logo acima para quem quiser conferir.
+          ZYRO e nunca apaga nada. O código está logo abaixo para quem quiser conferir.
         </p>
         <p>
           <b className="text-tinta-900">Enviar e-mails:</b> o aviso de vencimento sai do seu Gmail para você mesmo.
