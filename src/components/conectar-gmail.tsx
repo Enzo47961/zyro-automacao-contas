@@ -1,9 +1,8 @@
 'use client';
 
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
-import { IconeCheck, IconeCopiar, IconeSeta, IconeX } from './icones';
+import { IconeCheck, IconeCopiar, IconeSeta } from './icones';
 
 export function FormConectar() {
   const router = useRouter();
@@ -82,55 +81,20 @@ export function CopiarScript({ script }: { script: string }) {
 /**
  * Enquanto o Gmail não se conecta, recarrega o status a cada 5 segundos. Quando
  * conecta, o título da aba muda (a pessoa está na aba do Google e precisa achar
- * esta), a página sobe até o cartão e surge um aviso no canto com o botão do
- * painel. O aviso também aparece se a conexão aconteceu há poucos minutos.
+ * esta) e a página sobe até o cartão com o botão do painel.
  */
-export function AguardarConexao({ conectado, recente, painel }: { conectado: boolean; recente: boolean; painel: string }) {
+export function AguardarConexao({ conectado }: { conectado: boolean }) {
   const router = useRouter();
   const antes = useRef(conectado);
-  const [aviso, setAviso] = useState(conectado && recente);
   useEffect(() => {
     if (conectado) {
       document.title = '✅ Gmail conectado · ZYRO';
-      if (!antes.current) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        setAviso(true);
-      }
+      if (!antes.current) window.scrollTo({ top: 0, behavior: 'smooth' });
       antes.current = true;
       return;
     }
     const t = setInterval(() => router.refresh(), 5000);
     return () => clearInterval(t);
   }, [conectado, router]);
-
-  if (!aviso) return null;
-  return (
-    <div
-      role="alertdialog"
-      aria-labelledby="aviso-instalado"
-      className="fixed inset-x-4 bottom-4 z-50 animate-surgir rounded-3xl border border-floresta-700 bg-floresta-950 p-5 text-white shadow-alta sm:inset-x-auto sm:right-6 sm:bottom-6 sm:w-[380px]"
-    >
-      <button type="button" onClick={() => setAviso(false)} aria-label="Fechar" className="absolute right-3 top-3 rounded-lg p-1.5 text-tinta-400 hover:bg-white/10 hover:text-white">
-        <IconeX size={16} />
-      </button>
-      <div className="flex items-start gap-3 pr-6">
-        <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-limao-400 text-floresta-950">
-          <IconeCheck size={22} />
-        </span>
-        <div>
-          <p id="aviso-instalado" className="text-lg font-bold">
-            ZYRO instalado!
-          </p>
-          <p className="mt-0.5 text-sm text-tinta-300">Seu Gmail está conectado. Agora é só clicar em Meu painel para ver as suas contas.</p>
-        </div>
-      </div>
-      <Link
-        href={painel}
-        autoFocus
-        className="mt-4 flex items-center justify-center gap-2 rounded-2xl bg-limao-400 px-5 py-3 font-semibold text-floresta-950 transition hover:bg-limao-300"
-      >
-        Meu painel <IconeSeta size={18} />
-      </Link>
-    </div>
-  );
+  return null;
 }
