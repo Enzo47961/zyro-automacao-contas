@@ -49,7 +49,11 @@ export default async function PaginaGmail({ params }: Props) {
 
   return (
     <div className="min-h-dvh">
-      <AguardarConexao conectado={conectado} />
+      <AguardarConexao
+        conectado={conectado}
+        recente={Boolean(carteira.gmail_conectado_em) && Date.now() - Date.parse(carteira.gmail_conectado_em!) < 15 * 60_000}
+        painel={`/p/${carteira.token_painel}`}
+      />
       <header className="bg-floresta-950 text-white">
         <div className="mx-auto flex max-w-4xl items-center justify-between gap-3 px-4 py-4 sm:px-6">
           <Link href="/" className="flex items-center gap-2 font-display text-xl font-bold">

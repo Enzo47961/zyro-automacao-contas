@@ -25,9 +25,24 @@ function instalar() {
   ScriptApp.newTrigger('verificarContas').timeBased().everyMinutes(10).create();
   ScriptApp.newTrigger('enviarAvisos').timeBased().everyHours(1).create();
   chamar_('post', '/api/gmail/ping', { email: Session.getEffectiveUser().getEmail() });
+  confirmarInstalacao_();
   verificarContas();
   enviarAvisos_(true);
   Logger.log('✅ ZYRO instalado! Volte para a aba do ZYRO (ela mostra "Gmail conectado") ou abra o seu painel: ${painel}');
+}
+
+/** E-mail para você mesmo confirmando a instalação: o Gmail notifica no celular e no computador. */
+function confirmarInstalacao_() {
+  const painel = '${painel}';
+  GmailApp.sendEmail(Session.getEffectiveUser().getEmail(), 'Aviso ZYRO · ✅ ZYRO instalado no seu Gmail',
+    'O ZYRO está conectado e confere a sua caixa de entrada a cada 10 minutos. Abra o seu painel: ' + painel, {
+      name: 'ZYRO',
+      htmlBody: '<div style="font-family:Arial,sans-serif;max-width:480px;margin:auto;border:1px solid #d0d8d1;border-radius:14px;overflow:hidden">' +
+        '<div style="background:#061b11;color:#fff;padding:16px 20px;font-size:18px;font-weight:bold">⚡ ZYRO</div>' +
+        '<div style="padding:20px;color:#141b16"><p style="margin:0;font-size:20px;font-weight:bold">✅ ZYRO instalado!</p>' +
+        '<p style="color:#46554a">Seu Gmail está conectado. A cada 10 minutos o ZYRO confere a caixa de entrada; as contas aparecem no painel e os avisos chegam aqui às 8h.</p>' +
+        '<p style="margin:20px 0 0"><a href="' + painel + '" style="background:#c8f04d;color:#061b11;text-decoration:none;padding:12px 18px;border-radius:12px;font-weight:bold">Meu painel →</a></p></div></div>',
+    });
 }
 
 /** Lê os e-mails novos com cara de conta e manda para o ZYRO. Cada conversa é marcada com o rótulo ZYRO. */
